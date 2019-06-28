@@ -1,1 +1,10 @@
+#First Project/Assignment given by MKCL
+Created a ToDo List website/app
 
+FrontEnd uses CSS,HTML,Vue JS
+BackEnd will use MongoDB as database
+Server used is Express API(NodeJS)
+
+Additional Possible Changes:
+1.Add a login page
+2.Make the login page use MySQL database
