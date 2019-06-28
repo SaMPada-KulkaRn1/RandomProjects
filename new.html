@@ -1,0 +1,73 @@
+<html>
+<head>
+    <title>To-Do List</title>
+    </head>
+    <body>
+    <script src="Practice/vue.js"></script>
+        <link rel="stylesheet" type="text/css" href="new.css">
+        <img src="pencil.jpg" height="100px" width="80px" align="left" align="top" class="todo">
+        <h1 style="font-family: thinkdream;font-size: 60px" align= "center" class="todotext">To-Do List</h1>
+        <br>
+        <div id="app" class="taskarea">
+            <hr>
+            <div class="texthere" style="font-family: thinkdream;font-size: 35px"  v-if="!pshow"> Enter your Task : <input
+      v-model="newTask"
+      placeholder="E.g. Feed the cat"
+        @keyup.enter = "addNewTask" 
+         @keyup.delete = "show=!show"                                                                                                                  
+    >
+                <button @click="addNewTask" height="40px" width="40px"><img src="enter.png" height="39px" width="39px"></button>
+            </div>
+            <img src="pencil.gif" v-if="pshow">
+            <hr>
+  <ul>
+    <li
+      v-for="(todo, index) in todos"
+      :id="todo.id"
+      :name="todo.name"
+      style="font-family: ladylike;font-size: 27px"
+    >  <p>
+    {{todo.name}}
+        <button @click="removeTask(index)" v-if="show" type="image" height="20px" width="20px" align="right" id="buttonimage" style="position: absolute;right: 5%" ><img src="delete.png" height="20px" width="20px"></button>
+      </p>
+    </li>
+  </ul>
+  <hr>
+            <button @click="pshow=!pshow" height="50px" width="50px" style="position: absolute;left: 29%"><img src="add.jpg" height="49px" width="49px" ></button>
+            <button @click="show = !show" height="50px" width="50px" style="position: absolute;left: 50%"><img src="del.png" height="49px" width="49px"></button>
+</div>
+        <script>
+            //import axios from 'axios';
+       const STORAGE_KEY = "todo-storage";
+new Vue({
+  el: '#app',
+  data: {
+    newTask: '',
+    show: false,
+      pshow: true,
+    todos: [],
+    nextTaskId: 1
+  },
+    //created () {
+      //this.todos = JSON.parse(localStorage.getItem(STORAGE_KEY)||'[]');  
+    //},
+  methods: {
+    addNewTask: function () {
+      this.todos.push({
+        id: this.nextTaskId++,
+        name: this.newTask
+      })
+      //localStorage.setItem(STORAGE_KEY,JSON.stringify(this.todos));
+        //console.log(this.todos)
+      this.newTask = ''
+    },
+    removeTask : function(index) {
+    this.todos.splice(index,1)
+        this.show=!this.show;
+         //localStorage.setItem(STORAGE_KEY,JSON.stringify(this.todos));
+    }
+  }
+})
+        </script>
+    </body>
+</html>

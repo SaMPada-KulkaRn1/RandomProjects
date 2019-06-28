@@ -1,0 +1,29 @@
+ @font-face {
+  font-family: thinkdream;
+  src: url(ThinkDreams.otf);
+}
+
+ @font-face {
+  font-family: ladylike;
+  src: url(LadylikeBB.ttf);
+}
+
+.todo {
+   position: absolute;
+    left: 40%;
+    top: 5%;
+}
+
+.todotext {
+    position: absolute;
+    right: 38%;
+}
+
+.taskarea {
+    position: absolute;
+    top: 25%;
+    left: 33%;
+}
+
+
+
